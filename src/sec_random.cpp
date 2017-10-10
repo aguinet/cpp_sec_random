@@ -67,7 +67,7 @@ SecRandom::result_type SecRandom::operator()()
   return Ret;
 }
 
-#elif defined(__unix__)
+#elif defined(__unix__) || defined(__APPLE__)
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -109,15 +109,6 @@ SecRandom::result_type SecRandom::operator()()
     p += static_cast<size_t>(s);
   }
   return r;
-}
-
-#elif defined(__APPLE__)
-#include <cstdlib>
-#include <cstdint>
-
-SecRandom::result_type SecRandom::operator()()
-{
-  return arc4random();
 }
 
 #endif

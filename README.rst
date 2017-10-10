@@ -36,8 +36,7 @@ Implementation
 
 This class is basically a wrapper around these APIs:
 
-* under OSX, it uses ``arc4random``
-* under Unix, it reads random bytes from ``/dev/urandom``
+* under Unix and OSX, it reads random bytes from ``/dev/urandom``
 * under Windows, it uses ``CryptGenRandom``
 
 Improvements/idea

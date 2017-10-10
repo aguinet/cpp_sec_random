@@ -60,7 +60,7 @@ private:
   HCRYPTPROV HProv_;
 };
 
-#elif defined(__unix__)
+#elif defined(__unix__) || defined(__APPLE__)
 
 struct SecRandom: public details::SecRandomBase<uint8_t>
 {
@@ -71,15 +71,6 @@ struct SecRandom: public details::SecRandomBase<uint8_t>
 
 private:
   int fd_;
-};
-
-#elif defined(__APPLE__)
-#include <cstdlib>
-#include <cstdint>
-
-struct SecRandom: public details::SecRandomBase<uint32_t>
-{
-  result_type operator()();
 };
 
 #else
